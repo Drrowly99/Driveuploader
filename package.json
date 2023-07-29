@@ -1,0 +1,30 @@
+{
+  "name": "drive",
+  "version": "1.0.0",
+  "description": "A file drive project for speedlink ltd",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drrowly99/Driveuploader.git"
+  },
+  "keywords": [
+    "drive"
+  ],
+  "author": "Divine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Drrowly99/Driveuploader/issues"
+  },
+  "homepage": "https://github.com/Drrowly99/Driveuploader#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "googleapis": "^123.0.0",
+    "nodemon": "^3.0.1"
+  }
+}
