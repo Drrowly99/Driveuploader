@@ -35,21 +35,62 @@ const oauth2Client = new google.auth.OAuth2(
 
 module.exports = app.get('/redirect', async (req, res) => {
     console.log('redirect')
+    
+    let str = "drrowly99@gmail.com"
+    let email_ = str.substring(0, str.length - 10);
+
     const {code} = req.query;
     const {tokens} = await oauth2Client.getToken(code);
+
+    // let tok = [{'email':email_,'data':tokens}]
+    // console.log(tok)
+    // var read = fs.readFileSync('cred.json');
+    // var json = JSON.parse(read);
+    // json.push(tok)
+    
     oauth2Client.setCredentials(tokens);
-    fs.writeFileSync("creds.json", JSON.stringify(tokens));
+    fs.writeFileSync("cred.json", JSON.stringify(tokens));
+// console.log('finally'+tok[2])
+
     res.send(`Success ${tokens.access_token} and refresh = ${tokens.refresh_token} and scope = ${tokens.scope}`);
+});
+
+module.exports = app.get('/redirects', async (req, res) => {
+    console.log('redirect')
+    
+    let str = "drrowly99@gmail.com"
+    email = str.substring(0, str.length - 10);
+
+    const {code} = req.query;
+    const {tokens} = await oauth2Client.getToken(code);
+    let tok = {'email':tokens}
+    console.log(tok)
+
+
+    // var read = fs.readFileSync('cred.json');
+    // var json = JSON.parse(read);
+    // json.push(tok)
+
+    // fs.writeFileSync("cred.json", JSON.stringify(json));
+    // oauth2Client.setCredentials(tok.drrowly99);
+    // res.send(`Success ${tokens.access_token} and refresh = ${tokens.refresh_token} and scope = ${tokens.scope}`);
+    // res.redirect('http://localhost:3000/up')
 });
 
 
 module.exports = app.post('/upload/', uploadMiddleware, async (req, res) => {
       // Handle the uploaded files
         const files = req.files;
+        var numCallbackRuns = 0;
+        var holdFileId = '';
+        console.log(files.length)
+     
 
         // Process and store the files as required
         // For example, save the files to a specific directory using fs module
         files.forEach((file) => {
+        
+            
             const filePath = `uploads/${file.filename}`;
             console.log(mime.getType(filePath));
 
@@ -62,18 +103,22 @@ module.exports = app.post('/upload/', uploadMiddleware, async (req, res) => {
             if(folder == 'none'){
                 uploadFile(folder, type, filename_)
                 console.log('agh')
-                return
+                
             }else{
+                if(numCallbackRuns >= 1){
+                    uploadFile(holdFileId, type, filename_) 
+                }
                 createFolder(folder, type, filename_)
                 console.log('good')
-                return
+                
             }
-            // fs.rename(file.path, filePath, (err) => {
-            // if (err) {
-            //     // Handle error appropriately and send an error response
-            //     return res.status(500).json({ error: 'Failed to store the file' });
-            // }
-            // });
+            fs.rename(file.path, filePath, (err) => {
+            if (err) {
+                // Handle error appropriately and send an error response
+                // return res.status(500).json({ error: 'Failed to store the file' });
+            }
+            });
+            numCallbackRuns++;
         });
 
         // Send an appropriate response to the client
@@ -128,7 +173,8 @@ async function uploadFile(data, type, filename_){
               });
               
     const sometext = 'mono is good'
-    const folderId = data;
+    const folderId = '1pLyg3j9a2T1IksJr8XMrY9evddCjLSgS';
+    console.log('CONFIRM FIRST FOLDER Id:',folderId);
     if(folderId !== 'none'){
         try{
             const response = await drive.files.create({
@@ -140,7 +186,7 @@ async function uploadFile(data, type, filename_){
                     },
                     media: {
                     mimeType: type,
-                    body: filename_
+                    body: fs.createReadStream('uploads/'+filename_),
                     }
                 
             });
@@ -160,7 +206,7 @@ async function uploadFile(data, type, filename_){
                     },
                     media: {
                     mimeType: type,
-                    body: filename_
+                    body: fs.createReadStream('uploads/'+filename_),
                     }
                 
             });
@@ -194,7 +240,8 @@ async function createFolder(data, type, filename_) {
         resource: fileMetadata,
         fields: 'id',
       });
-      console.log('Folder Id:', file.data.id);
+      console.log('first FOLDER Id:', file.data.id);
+      global.holdFileId = file.data.id;
       uploadFile(file.data.id, type, filename_)
     //   return file.data.id;
     } catch (err) {

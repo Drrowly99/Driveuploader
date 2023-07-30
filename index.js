@@ -28,6 +28,10 @@ app.get('/', function(req, res) {
     res.redirect('view/index.html');
 });
 
+app.get('/up', function(req, res) {
+    res.redirect('view/upload2.html');
+});
+
 
 
 
