@@ -4,19 +4,31 @@ const app = express()
 const bodyParser = require('body-parser')
 const path = require('path');
 const process = require('process');
+
 const {google} = require('googleapis');
-const about = require('./src/about');
-const contact = require('./src/contact');
+const googledrive = require('./src/google');
+const upload_ = require('./src/upload');
+const mime = require('mime');  //mime.getType(file_path)
 
 
-app.use('/contact', contact);
-app.use('/about', about);
 
-// app.use(bodyParser.urlencoded())
-// app.use(bodyParser.json())
+app.use('/upload', upload_);
+app.use('/google', googledrive);
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json()) // To parse the incoming requests with JSON payloads
+
+
+
+
+// Express Middleware for serving static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', function(req, res) {
+    res.redirect('view/index.html');
+});
+
+
 
 
 const port = process.env.PORT || 3000
@@ -25,9 +37,22 @@ app.listen(port, () => {
 })
 
 
-app.get('/', (req, res) => {
-    res.send('working')
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

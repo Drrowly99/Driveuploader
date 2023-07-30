@@ -1,0 +1,122 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.11
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Jul 17, 2023 at 09:10 PM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `dadicash_qr`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vendors`
+--
+
+CREATE TABLE `vendors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `v_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `account` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `firstname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `middlename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lastname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_number` bigint(20) NOT NULL,
+  `banking_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bank_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bank_account_number` int(11) DEFAULT NULL,
+  `verified_bank_user` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vendor_category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `business_address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `business_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `NIN` text COLLATE utf8mb4_unicode_ci,
+  `BVN` text COLLATE utf8mb4_unicode_ci,
+  `NOK` text COLLATE utf8mb4_unicode_ci,
+  `NOK_number` int(11) DEFAULT NULL,
+  `NOK_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `transaction_count` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `wallet_amount` double UNSIGNED NOT NULL DEFAULT '0',
+  `wallet_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_amount` double UNSIGNED NOT NULL DEFAULT '0',
+  `current_pay` double UNSIGNED NOT NULL DEFAULT '0',
+  `phone_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `sms_notification` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `email_notification` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `card_token` text COLLATE utf8mb4_unicode_ci,
+  `first_6digits` text COLLATE utf8mb4_unicode_ci,
+  `last_4digits` text COLLATE utf8mb4_unicode_ci,
+  `card_issuer` text COLLATE utf8mb4_unicode_ci,
+  `card_type` text COLLATE utf8mb4_unicode_ci,
+  `expiry` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `trx_id` text COLLATE utf8mb4_unicode_ci,
+  `pin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'vendor',
+  `auth` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `vendors`
+--
+
+INSERT INTO `vendors` (`id`, `v_id`, `account`, `email`, `email_verified_at`, `password`, `remember_token`, `firstname`, `middlename`, `lastname`, `phone_number`, `banking_status`, `bank_name`, `bank_account_number`, `verified_bank_user`, `vendor_category`, `business_address`, `business_name`, `NIN`, `BVN`, `NOK`, `NOK_number`, `NOK_address`, `transaction_count`, `wallet_amount`, `wallet_id`, `last_amount`, `current_pay`, `phone_status`, `status`, `sms_notification`, `email_notification`, `card_token`, `first_6digits`, `last_4digits`, `card_issuer`, `card_type`, `expiry`, `trx_id`, `pin`, `role`, `auth`, `created_at`, `updated_at`) VALUES
+(11, '54Vgggl0qQ03hLlEte5UvVvSjUqE2ar1v9a7KUxI', 'P8146669097', 'iniobongoton@yahoo.com', NULL, '$2y$10$kJjKqfZC6Gkp4G0M6yqz7u1BahWiuTGzT.gqHtzk2DfNTM3afWuGG', NULL, 'INIOBONG', NULL, 'OTON', 8146669097, 'yes', NULL, NULL, NULL, 'Resturant/Eatery', 'Iwofe Road Port Harcourt', 'Native food house', NULL, NULL, NULL, NULL, NULL, '0', 0, 'K8NGTDj9g5g0h34VY0WD', 0, 0, '0', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'vendor', 0, '2023-07-03 13:40:13', '2023-07-03 13:40:13'),
+(12, 'fEPaHB0PclZHn5UQZTvvE72vQjlchanV0LYWhHIx', 'O8157770340', 'blingblingoton@gmail.com', NULL, '$2y$10$vnLWpAADay/1KXQ6LApxauQPn0DMUmH1qjXWViFvkypJLmHhN9hju', NULL, 'INIOBONG', NULL, 'OTON', 8157770340, 'yes', NULL, NULL, NULL, 'Resturant/Eatery', '49 Iwofe Road Port Harcourt', 'Native Food House', NULL, NULL, NULL, NULL, NULL, '0', 0, 'GX9mBibgLHzNgS27VwJx', 0, 0, '0', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJpdiI6ImxFSHl6ZTdoTHlxcEtmOE1oeVVFY2c9PSIsInZhbHVlIjoiUE9ya2pPalloTlpZbXNkYTZSc0ZIZz09IiwibWFjIjoiY2NhYjBjZTExYjRmYTA2OTA5MDQ2OGUyZWEwNWY5MjdhNTQ0OGVjODQzMWMyZmFmYWFmYTExNWRlZTU0NjVlNiIsInRhZyI6IiJ9', 'vendor', 0, '2023-07-03 13:46:47', '2023-07-04 18:55:53'),
+(13, 'HDEBQ0SP74rDAWYCaeJUqYadh86ae032cWqMKIlM', 'Q8149448500', 'teukuraja348@gmail.com', NULL, '$2y$10$WU9bEYeSBMKhQ702OE/3Y.YSTI6Uw04CDWfRp14tNABJdgoQGrwj6', NULL, 'Precious', NULL, 'Obiazi', 8149448500, 'yes', NULL, NULL, NULL, 'Stationaries', 'Abuja campus', 'Preshventures', NULL, NULL, NULL, NULL, NULL, '0', 2, 'pUWzwj5fFYdQGup4z0Pq', 0, 0, '0', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJpdiI6IkZZYkY3WlpSczdCeElsQTdPUXNtMVE9PSIsInZhbHVlIjoicTdJNGxiY3RQR1VJbThDSmh0eGlFZz09IiwibWFjIjoiMTEzMGEyZjY4MzYxYTFkODc3MWQ5ZDdmNDZkMWM5OTg0ZDY0NjMyMzZkMzI1NTViZTU2ZDNjZjRhOTYwZGQzNSIsInRhZyI6IiJ9', 'vendor', 0, '2023-07-03 16:52:43', '2023-07-04 15:07:15'),
+(14, 'qXOvt1hJrG1NIoiOXS8qmkmfWjcMCOczcrAqfmUh', 'P9079417401', 'drrowly99@gmail.com', NULL, '$2y$10$ZQkWfFJUs4jgbkUfofnv7.93nSYTymgVTzOEn8qibdTrgqDxkLkju', NULL, 'Divine', NULL, 'Iso', 9079417401, 'yes', NULL, NULL, NULL, 'Pharmacy', 'Egbeli off ogbogoro, portharourt', 'Divine pharma', NULL, NULL, NULL, NULL, NULL, '0', 18, 'HASCP4nNzk4GAlGftp5T', 0, 0, '0', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJpdiI6IkE1M1RKdnBIeVJsTXMzaXJCb3Z1NUE9PSIsInZhbHVlIjoickt3dzl0dXlDZEJzQ3FKZUtRNzJJZz09IiwibWFjIjoiMjY0ZTUxNWJhMjdjMWE1ODUxOTFlYmExMzMyZTIyYzU1ZTM4NDcyNTg0YjNhYTRjMjA4ZDIyNmE2ZWJlNTBiNyIsInRhZyI6IiJ9', 'vendor', 0, '2023-07-04 08:50:59', '2023-07-15 07:09:51'),
+(15, 'LqtEdR6nxJQ9liUSVhUw5NeCIjXUT6WQk0Xc6Vgz', 'X9076058738', 'Dadivendor1@gmail.com', NULL, '$2y$10$c3xtPnnd3O/3FdFK7o0XGesNjeTVt.EL4o2gcAxvf4MpGbl6n8XYa', NULL, 'Dadipay', NULL, 'Vendor', 9076058738, 'yes', NULL, NULL, NULL, 'Food Vendor', 'Egbeli off ogbogoro, portharourt', 'DADI vendor support', NULL, NULL, NULL, NULL, NULL, '0', 15, 'DyxXUcSY8oz7L7NUjBDj', 0, 0, '0', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJpdiI6IlFDaFN5dnhTT3AwbXV4NG9aeTlxYWc9PSIsInZhbHVlIjoiWUluTHZxelJZTUQwRVlEK2RTMDZVZz09IiwibWFjIjoiY2MwYzQ1YmVjYWEwNDYwZWQ3MzQ0OTNiNjE2ZTBhMWU4NmI2NTkyOTdmZDk3ZmY0NWYxZWZmMTZiMmEyYTU4ZiIsInRhZyI6IiJ9', 'vendor', 0, '2023-07-12 08:56:06', '2023-07-12 09:16:53'),
+(16, 'fQYFjCsS3ZlauzmKiwTO3p10FrqZRd5bXJVGdU9p', 'U8103328446', 'iszzykwin1@gmail.com', NULL, '$2y$10$H8/HB2TeZyDh2lBtHkvpre8JAdO/yn36a994e4iyNRv/ChWx18V9m', NULL, 'Israel', NULL, 'Emmanuel', 8103328446, 'yes', NULL, NULL, NULL, 'Resturant/Eatery', 'IAUE, Iwofe', 'Eat@iszzy', NULL, NULL, NULL, NULL, NULL, '0', 0, 'yIJJfNxol05ZIv8DlR3C', 0, 0, '0', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJpdiI6IjhtTG5yMjhHRzdKYWRpbko5b2ZTalE9PSIsInZhbHVlIjoiWWxMTVdWZXNjdFBiYmZvVDhzQWhTQT09IiwibWFjIjoiN2RmMjg1ZGY1ZDVjNWJmNDkzZTg5NGQ4MTI0ZTQxMmI2ODA5NTY1Y2ZiZTQ1NzI4ZTlkZjE3OWJmMDBiZTBmOSIsInRhZyI6IiJ9', 'vendor', 0, '2023-07-12 10:33:32', '2023-07-12 10:36:12'),
+(17, 'qXc0EpgIEWAVXUdmo69MCBZaLP7ApdG2JzRcGQUg', 'N9163026295', 'dadipay_graceofgod@gmail.com', NULL, '$2y$10$1Lkzaa5Ge22wXD5woIbqBuYuFVFC0eQQRI4wLiHqQnyu8RCe86tv6', NULL, 'grace', NULL, 'madam', 9163026295, 'yes', NULL, NULL, NULL, 'Street Store', 'New Heaven Shopping Complex', 'Grace Of God Provision Store', NULL, NULL, NULL, NULL, NULL, '0', 200, 'KPks7ETEQB26NC1yBamt', 0, 0, '1', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJpdiI6IklWaUdLeVhpSWFiRTVtREdBcFVQU3c9PSIsInZhbHVlIjoiYlNRRWRRa2hrU29TTE1BaHllSzE0UT09IiwibWFjIjoiOTRiY2ZiZTNkZjcxMjQxNDQxYTU1YWM5NTJkYTNiZWM2MGViYjE0ODg3ZDIxNzRmNTM4MzhjNzYzNjFkYTE3NiIsInRhZyI6IiJ9', 'vendor', 0, '2023-07-12 20:44:18', '2023-07-17 10:16:48'),
+(18, 'aHrr2qjMG93Ab6CBxyI7ndfli8ATkOy67feYf1wD', 'Y8033357860', 'dadipay_melvira@gmail.com', NULL, '$2y$10$t6yIg9szuU7daYTRZkuViuvmzS6Ps/RYdEpLa94iOoKgaZE12R4uW', NULL, 'Melvira', NULL, 'Vendor', 8033357860, 'yes', NULL, NULL, NULL, 'Food Vendor', 'New Heaven Shopping complex, Ignatius', 'Melvira Resturant', NULL, NULL, NULL, NULL, NULL, '0', 0, 'rp36fnape9rnJxhwsycy', 0, 0, '1', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJpdiI6IkMrU3hlbUNIQVVxM0JDRGZYVVAySlE9PSIsInZhbHVlIjoiOG1MclE3eGRvZ012bExLSTNaWi9uQT09IiwibWFjIjoiOTJjYjJjYTM5MGVlZDhhMjA2Y2I3YjRhN2VmZGUxMGJmMDdkYWJhMTljNmI2ZDY0Mzg0YzFiNWIyMDIwNTE2NyIsInRhZyI6IiJ9', 'vendor', 0, '2023-07-12 20:50:17', '2023-07-17 09:29:30'),
+(19, 'JpwgGJDlPdNfEl8k7UYExL6nmi3kqejcbXOV2oLL', 'U8032445171', 'dadipay_vivian@gmail.com', NULL, '$2y$10$gw8pcnUXngcI8UbJWWCXy.BtRaij/FIvN1YC/KxTSh2qkHKsCKlJO', NULL, 'Vivian', NULL, 'Ndidi', 8032445171, 'yes', NULL, NULL, NULL, 'Resturant/Eatery', 'Ignatius hostel complex', 'Vivian Resturant', NULL, NULL, NULL, NULL, NULL, '0', 0, 'ZDqbr9YtpDGQerzkRixT', 0, 0, '1', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJpdiI6IjV4Wkx2S3REQTVEOWdjb3lCLzJRL3c9PSIsInZhbHVlIjoiYlFMM0ZMVVZadGV6LzIzclRaamg2UT09IiwibWFjIjoiNDQzYzExZmM2OWNhZWExZjI3ZDk3YTViOTgyNDhmYjM2Zjk5NDAxMWY0ZjI3MDFlZjdjNmRlYzYyOTUyNjc3YiIsInRhZyI6IiJ9', 'vendor', 0, '2023-07-12 21:04:52', '2023-07-17 08:38:57'),
+(20, 'FDZQptBsEtpZaX8IWssjmDNKg0SCexs3aluVBOMq', 'S7038240975', 'dadipay_nengi@gmail.com', NULL, '$2y$10$eA4IlBU4i33Pu5mVDbovy.E1M0OhwUqHLYOaZF6Qs02Ay.OwKAuOG', NULL, 'Nengi', NULL, 'West', 7038240975, 'yes', NULL, NULL, NULL, 'Food Vendor', 'Ignatius Hostel Shopping Complex', 'Chews Restaurant', NULL, NULL, NULL, NULL, NULL, '0', 2400, 'QNcGDAL5mWmWrGWAfTJH', 0, 0, '1', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJpdiI6IlZSV3ZNUmFIdmNyaEkzakF1VW5zUHc9PSIsInZhbHVlIjoiemdXeUkrNERWVEtQRnZZWDBiYXFGZz09IiwibWFjIjoiYTE5NWQ5NWEyMGRlM2VmNGY5ZWU3MjExM2JlMmE5MmI3NzA2NDVhYjdmYmVkODljNDZjMzM4NGI1MDg5MDM3YiIsInRhZyI6IiJ9', 'vendor', 0, '2023-07-12 21:05:38', '2023-07-17 14:11:39'),
+(21, 'QwKBopTa59AY2CYrc9URVarqaTU89P5KfbjyoFwK', 'W9053881307', 'Samuelmercynwigua@gmail.com', NULL, '$2y$10$nwlDqJ8tVAsiTFIWCx9n.eKdTrme5oFH7NDEou1BL48Vd5R4.myqK', NULL, 'Samuel', NULL, 'Mercy', 9053881307, 'no', NULL, NULL, NULL, 'Photo Studio', 'No17 Egbelu', 'Mercy’s studio', NULL, NULL, NULL, NULL, NULL, '0', 0, 'kVxYMioI3nHeXjtXOc3w', 0, 0, '0', '0', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'eyJpdiI6IlFjSGVZb1BFcmpUdHA5Nk5oL1V2eXc9PSIsInZhbHVlIjoiVjN1NVFoMUJzc01TaFhzSzd0UUExUT09IiwibWFjIjoiZWVlZjY2OTBlOGY5OTgwODc4ZGIxNzgzNjA4NDVlNjc0MTY3NTA3Mzc4OGYyNzA1MjMyM2Q0NTEwZDU2NGJlZCIsInRhZyI6IiJ9', 'vendor', 0, '2023-07-15 13:07:59', '2023-07-15 13:54:31');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `vendors`
+--
+ALTER TABLE `vendors`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `vendors_account_unique` (`account`),
+  ADD UNIQUE KEY `vendors_email_unique` (`email`),
+  ADD UNIQUE KEY `vendors_wallet_id_unique` (`wallet_id`),
+  ADD KEY `vendors_phone_number_unique` (`phone_number`) USING BTREE;
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `vendors`
+--
+ALTER TABLE `vendors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
